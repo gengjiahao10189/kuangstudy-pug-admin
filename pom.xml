@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.pug</groupId>
+    <artifactId>kuangstudy-pug-admin</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--父工程-->
+    <packaging>pom</packaging>
+
+    <!--
+    1：聚合工程：定义了父模块和子模块的关系，这两者是一种父子继承的关系。
+    父工程：负责统一编译，打包，管理依赖，版本的统一控制和分发。
+    子模块：在maven工程里称之为module，模块和模块之间是平级的。是可以相互依赖的。
+    2：子模块可以使用父工程中的所有的资源。子模块之间如果要使用资源，必须构建依赖即可。
+    3：一个父工程可以是由多个不同的子工程共同组合而成。
+    -->
+    <modules>
+        <module>kuangstudy-pug-commons</module>
+        <module>kuangstudy-pug-pojo</module>
+        <module>kuangstudy-pug-mapper</module>
+        <module>kuangstudy-pug-service</module>
+        <module>kuangstudy-pug-web</module>
+        <module>kuangstudy-pug-web-app</module>
+        <module>kuangstudy-pug-commons</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <mysql.version>8.0.26</mysql.version>
+        <lombok.version>1.18.20</lombok.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.6.2</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
